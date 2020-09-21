@@ -1,0 +1,65 @@
+apply plugin: 'com.android.library'
+def projInfo = rootProject.ext.android
+def libInfo = rootProject.ext.dependncies
+android {
+    compileSdkVersion projInfo.compileSdkVersion
+    buildToolsVersion projInfo.buildToolsVersion
+    defaultConfig {
+        minSdkVersion projInfo.minSdkVersion
+        targetSdkVersion  projInfo.targetSdkVersion
+        versionCode projInfo.versionCode
+        versionName projInfo.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    android{
+        compileOptions{
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation libInfo.appcompat
+    implementation libInfo.constraint
+    testImplementation libInfo.junit
+    androidTestImplementation libInfo.runner
+    androidTestImplementation libInfo.espresso
+
+    api libInfo.rxjava
+    api libInfo.y_divideritemdecoration
+    api libInfo.rxandroid
+    api libInfo.okhttp
+    api libInfo.interceptor
+    api libInfo.retrofit
+    api libInfo.converter
+    api libInfo.retrofit2
+    api libInfo.autodispose
+    api libInfo.dagger
+    api libInfo.utilcode
+    api libInfo.annotations
+    api libInfo.glide
+    api libInfo.gson
+    api libInfo.BaseRecyclerViewAdapterHelper
+    api libInfo.recyclerview
+    api libInfo.SmartRefreshLayout
+    api libInfo.banner
+    api libInfo.circleimageview
+    api libInfo.updateapputils
+    api libInfo.umsdk
+    api libInfo.push
+    api libInfo.common
+    api libInfo.screenadaptation
+    annotationProcessor libInfo.daggercompiler
+}
